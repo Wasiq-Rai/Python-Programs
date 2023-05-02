@@ -31,3 +31,17 @@ def analyze_data(data):
         'num_male': num_male,
         'avg_income': avg_income
     }
+# Define a function to write the results to a CSV file
+def write_results(filename, results):
+    with open(filename, 'w', newline='') as f:
+        writer = csv.writer(f)
+        writer.writerow(['Statistic', 'Value'])
+        for key, value in results.items():
+            writer.writerow([key, value])
+
+# Main program
+if __name__ == '__main__':
+    data = read_data('input.csv')
+    results = analyze_data(data)
+    write_results('output.csv', results)
+    print('Results written to output.csv')
